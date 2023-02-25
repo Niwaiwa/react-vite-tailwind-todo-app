@@ -27,7 +27,7 @@ const TodoForm = (props: any) => {
         className='todo-input'
         onChange={handleChange}
         />
-        <button className='todo-button'>Add todo</button>
+        <button className="px-6 py-2 text-sm rounded shadow bg-slate-100 hover:bg-slate-200 text-slate-500">Add todo</button>
     </form>
   )
 }
