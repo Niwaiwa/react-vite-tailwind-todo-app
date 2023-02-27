@@ -18,16 +18,18 @@ const TodoForm = (props: any) => {
   };
 
   return (
-    <form className='todo-form' onSubmit={handleSubmit}>
+    <form 
+      className='my-4' 
+      onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder='Add a todo'
         value={input}
         name="text"
-        className='todo-input'
+        className='rounded-l-lg py-2 p-4 mr-0 border-t border-b border-l text-gray-800 border-gray-200 bg-white'
         onChange={handleChange}
         />
-        <button className="px-6 py-2 text-sm rounded shadow bg-slate-100 hover:bg-slate-200 text-slate-500">Add todo</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-lg">Add todo</button>
     </form>
   )
 }

@@ -10,7 +10,9 @@ function Todo({todos, completeTodo}: TodoInputData) {
 
   return todos.map((todo: TodoData, index: number) => {
       return <div
-          className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
+          className={todo.isComplete 
+            ? 'todo-row complete' 
+            : 'my-1 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4'}
           key={index}
         >
           <div 
