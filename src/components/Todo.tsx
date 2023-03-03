@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { TodoData } from './TodoList'
+import TodoForm from './TodoForm'
 
 type TodoInputData = {
   todos: TodoData[];
   completeTodo: (id: number)=>void;
   deleteTodo: (id: number)=>void;
-  updateTodo: (id: number)=>void;
+  updateTodo: (id: number, value: string)=>void;
 }
 
+export type editData = {
+  id: number | null;
+  value: string;
+};
+
 function Todo({todos, completeTodo, deleteTodo, updateTodo}: TodoInputData) {
+  const [edit, setEdit] = useState<editData>({
+    id: null,
+    value: ''
+  });
+
+  const submitUpdate = (value: any) => {
+    if (edit.id) {
+      updateTodo(edit.id, value.text);
+    }
+    setEdit({
+      id: null,
+      value: ''
+    });
+  };
+
+  if (edit.id) {
+    return <TodoForm edit={edit} onSubmit={submitUpdate} />;
+  }
 
   return todos.map((todo: TodoData, index: number) => {
       return <div
@@ -24,10 +48,9 @@ function Todo({todos, completeTodo, deleteTodo, updateTodo}: TodoInputData) {
             >
             {todo.text}
           </div>
-          {/* <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-lg">Add todo</button> */}
           <button 
             className='bg-sky-500 hover:bg-sky-700 basis-1/6 rounded-md py-1 px-2'
-            onClick={() => updateTodo(todo.id)}
+            onClick={() => setEdit({id: todo.id, value: todo.text})}
             >
             update
           </button>
