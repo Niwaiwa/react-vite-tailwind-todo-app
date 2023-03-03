@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { TodoData } from './TodoList'
 import TodoForm from './TodoForm'
+import { TrashIcon, PencilSquareIcon } from '@heroicons/react/24/solid'
 
 type TodoInputData = {
   todos: TodoData[];
@@ -48,18 +49,26 @@ function Todo({todos, completeTodo, deleteTodo, updateTodo}: TodoInputData) {
             >
             {todo.text}
           </div>
-          <button 
+          {/* <button 
             className='bg-sky-500 hover:bg-sky-700 basis-1/6 rounded-md py-1 px-2'
             onClick={() => setEdit({id: todo.id, value: todo.text})}
             >
             update
-          </button>
-          <button 
+          </button> */}
+          {/* <button 
             className='bg-sky-500 hover:bg-sky-700 basis-1/6 rounded-md py-1 px-2'
             onClick={() => deleteTodo(todo.id)}
             >
             delete
-          </button>
+          </button> */}
+          <PencilSquareIcon 
+            className='h-8 w-8 bg-sky-500 hover:bg-sky-700 basis-1/6 rounded-md py-1 px-2'
+            onClick={() => setEdit({id: todo.id, value: todo.text})}
+          />
+          <TrashIcon 
+            className='h-8 w-8 bg-sky-500 hover:bg-sky-700 basis-1/6 rounded-md py-1 px-2'
+            onClick={() => deleteTodo(todo.id)}
+          />
         </div>
   });
 }
